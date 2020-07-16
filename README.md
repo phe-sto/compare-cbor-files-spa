@@ -2,7 +2,7 @@
 
 ### Single Web Page Application comparing the keys of two CBOR Files.
 
-⚠️ **Warning**: ONny the keys are compared!
+⚠️ **Warning**: Only the keys are compared!
 
 # How to
 
