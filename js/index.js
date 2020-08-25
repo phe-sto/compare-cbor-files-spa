@@ -192,6 +192,22 @@ function dropHandler(ev, id) {
             ).filter((x) => !Object.keys(cbor2).includes(x))}.`
           )
         );
+      } else if (
+        Object.keys(cbor2).some((key) => Object.keys(cbor1).includes(key))
+      ) {
+        // Common keys in both CBOR
+        document.getElementById("result").innerHTML = resultCard(
+          bsAlertElement(
+            errorMessage.CLASS,
+            `Common keys of both CBOR files.<br>Left side CBOR file contained extra key(s): ${Object.keys(
+              cbor1
+            ).filter(
+              (x) => !Object.keys(cbor2).includes(x)
+            )}.<br>Right side CBOR file contained extra key(s): ${Object.keys(
+              cbor2
+            ).filter((x) => !Object.keys(cbor1).includes(x))}.`
+          )
+        );
       } else {
         // No key in common
         document.getElementById("result").innerHTML = resultCard(
