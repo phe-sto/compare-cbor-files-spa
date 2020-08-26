@@ -1,3 +1,4 @@
+"use strict";
 // ID of the save result to PDF button.
 const PDF_BUTTON_ID = "pdf-button";
 /**
@@ -135,7 +136,7 @@ function dropHandler(ev, id) {
    */
   fileReader.onload = function () {
     try {
-      CBORdecoded = CBOR.decode(fileReader.result);
+      var CBORdecoded = CBOR.decode(fileReader.result);
     } catch (error) {
       return showMessageModalParameter(
         errorMessage.CLASS,
@@ -233,7 +234,7 @@ function dropHandler(ev, id) {
         .addEventListener("click", (event) => {
           // Copy the document to remove the save button.
           let HTMLToSave = document.cloneNode(true);
-          buttonToRemove = HTMLToSave.getElementById(PDF_BUTTON_ID);
+          let buttonToRemove = HTMLToSave.getElementById(PDF_BUTTON_ID);
           buttonToRemove.remove();
           const now = new Date(); // Date to name the file.
           // Initiate a unique instance of the jsPDF object for each document.
