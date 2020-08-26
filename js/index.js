@@ -1,3 +1,5 @@
+// ID of the save result to PDF button.
+const PDF_BUTTON_ID = "pdf-button";
 /**
  * Return an HTML formated string corresponding to Bootsrap card.
  * @param {String} cardHeader - Header content of the card.
@@ -10,7 +12,12 @@ const genericCard = (cardHeader, cardBody) =>
  * as Result.
  * @param {String} result - Result in the body card.
  */
-const resultCard = (result) => genericCard("Result", result);
+const resultCard = (result) =>
+  genericCard(
+    "Result",
+    result +
+      '<button type="button" class="btn btn-primary" id="pdf-button">Save to PDF</button>'
+  );
 /**
  * Class describing an success alert message for a div or in a card.
  */
@@ -217,6 +224,25 @@ function dropHandler(ev, id) {
           )
         );
       }
+      /**
+       * Create the event to save PDF witht the result of the comparaison.
+       * A button to save page as PDF file.
+       */
+      document
+        .getElementById(PDF_BUTTON_ID)
+        .addEventListener("click", (event) => {
+          // Copy the document to remove the save button.
+          let HTMLToSave = document.cloneNode(true);
+          buttonToRemove = HTMLToSave.getElementById(PDF_BUTTON_ID);
+          buttonToRemove.remove();
+          const now = new Date(); // Date to name the file.
+          // Initiate a unique instance of the jsPDF object for each document.
+          let pdf = new jsPDF();
+          // Convert the HTML to PDF via jsPDF.
+          pdf.fromHTML(HTMLToSave.body.innerHTML, 15, 15, { width: 170 });
+          // Save the under the desired file name.
+          pdf.save(`${now.toTimeString()}-CBOR-compare-result.pdf`);
+        });
     }
   };
   /*****************************************************************************
