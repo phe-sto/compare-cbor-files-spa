@@ -21,55 +21,68 @@
 <body>
     <main class="flex-shrink-0">
         <div class="container">
-            <h1 class="my-5 text-decoration-underline">
-                Compare keys of two CBOR files and highlight differences
-            </h1>
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/phe-sto" aria-label="Follow Phe-Sto on GitHub">Follow
-                PapIT</a>
-            <!-- Place this tag where you want the button to render. -->
-            <a class="github-button" href="https://github.com/phe-sto/compare-cbor-files-spa" data-icon="octicon-star"
-                aria-label="Star phe-sto/compare-cbor-files-spa on GitHub">Star</a>
-        </div>
-        <div class="container" id="result"></div>
-        <div class="container">
-            <div class="row my-5">
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body draggable" id="cbor-content-1" ondrop="dropHandler(event, this.id);"
-                            ondragover="dragOverHandler(event, this.id);">
-                            <div class="alert alert-primary" role="alert">
-                                Drop here a CBOR file
+            <div class="container">
+                <h1 class="my-5 text-decoration-underline">
+                    Compare keys of two CBOR files and highlight differences
+                </h1>
+            </div>
+            <div class="container" id="result">
+            </div>
+            <div class="container">
+                <div class="row my-5">
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body draggable" id="cbor-content-1" ondrop="dropHandler(event, this.id);"
+                                ondragover="dragOverHandler(event, this.id);">
+                                <div class="alert alert-primary" role="alert">
+                                    Drop here a CBOR file
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-6">
-                    <div class="card">
-                        <div class="card-body draggable" id="cbor-content-2" ondrop="dropHandler(event, this.id);"
-                            ondragover="dragOverHandler(event, this.id);">
-                            <div class="alert alert-primary" role="alert">
-                                Drop here a second CBOR file to compare
+                    <div class="col-6">
+                        <div class="card">
+                            <div class="card-body draggable" id="cbor-content-2" ondrop="dropHandler(event, this.id);"
+                                ondragover="dragOverHandler(event, this.id);">
+                                <div class="alert alert-primary" role="alert">
+                                    Drop here a second CBOR file to compare
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="modal fade" id="message-modal" tabindex="-1" aria-labelledby="messageModalTitle" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="messageModalTitle"></h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
+            <div class="container" id="external-links">
+                <p>
+                    <!-- Github -->
+                    <a class="github-button" href="https://github.com/phe-sto"
+                        aria-label="Follow Phe-Sto on GitHub">Follow
+                        PapIT</a>
+                    <a class="github-button" href="https://github.com/phe-sto/compare-cbor-files-spa"
+                        data-icon="octicon-star" aria-label="Star phe-sto/compare-cbor-files-spa on GitHub">Star</a>
+                </p>
+                <p>
+                    <!-- Licence -->
+                    <a href="http://www.wtfpl.net/"><img
+                            src="http://www.wtfpl.net/wp-content/uploads/2012/12/wtfpl-badge-4.png" width="80"
+                            height="15" alt="WTFPL" /></a>
+                </p>
+            </div>
+            <div class="modal fade" id="message-modal" tabindex="-1" aria-labelledby="messageModalTitle"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="messageModalTitle"></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
     </main>
     <!-- Optional JavaScript -->
     <!-- Popper.js first, then Bootstrap JS, jsPDF -->

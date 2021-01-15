@@ -1,6 +1,7 @@
 "use strict";
 // ID of the save result to PDF button.
 const PDF_BUTTON_ID = "pdf-button";
+const EXTERNAL_LINKS = "external-links";
 /**
  * Return an HTML formated string corresponding to Bootsrap card.
  * @param {String} cardHeader - Header content of the card.
@@ -234,8 +235,11 @@ function dropHandler(ev, id) {
         .addEventListener("click", (event) => {
           // Copy the document to remove the save button.
           let HTMLToSave = document.cloneNode(true);
-          let buttonToRemove = HTMLToSave.getElementById(PDF_BUTTON_ID);
-          buttonToRemove.remove();
+          // Remove element that should no be in the pdf.
+          [EXTERNAL_LINKS, PDF_BUTTON_ID].forEach((id) => {
+            let elementToRemove = HTMLToSave.getElementById(id);
+            elementToRemove.remove();
+          });
           const now = new Date(); // Date to name the file.
           // Initiate a unique instance of the jsPDF object for each document.
           let pdf = new jsPDF();
