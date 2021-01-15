@@ -5,8 +5,8 @@
 ⚠️ **Warning**: Only the keys are compared!
 
 # How to
-
-Drag two CBOR files onto the indicated zones. Reading the result.
+  - Go to our website https://compare-cbor.papit.fr/ if you are not hosting an instance.
+  - Drag two CBOR files onto the indicated zones. Reading the result.
 
 # Dependencies
   - [CBOR.js](https://github.com/paroga/cbor-js) to decode CBOR files.
