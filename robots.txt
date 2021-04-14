@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://www.compare-cbor.papit.fr/sitemap.xml
+Sitemap: http://compare-cbor.papit.fr/sitemap.xml
