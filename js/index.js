@@ -1,7 +1,10 @@
 "use strict";
-// ID of the save result to PDF button.
-const PDF_BUTTON_ID = "pdf-button";
-const EXTERNAL_LINKS = "external-links";
+// DOM IDs
+class ID {
+  static PDF_BUTTON = "pdf-button";
+  static MESSAGE_MODAL = "message-modal";
+  static RESULT = "result";
+}
 /**
  * Return an HTML formated string corresponding to Bootsrap card.
  * @param {String} cardHeader - Header content of the card.
@@ -18,7 +21,7 @@ const resultCard = (result) =>
   genericCard(
     "Result",
     result +
-      '<button type="button" class="btn btn-primary" id="pdf-button">Save to PDF</button>'
+      `<button type="button" class="btn btn-primary" id="${ID.PDF_BUTTON}">Save to PDF</button>`
   );
 /**
  * Class describing an success alert message for a div or in a card.
@@ -51,13 +54,13 @@ class readingFileError extends errorMessage {
 /**
  * Modal to show for any type of messages to access HTML native methods.
  */
-var messageModal = document.getElementById("message-modal");
+var messageModal = document.getElementById(ID.MESSAGE_MODAL);
 /**
  * Bootstrap modal to show for any type of messages to access bs specific
  * methods.
  */
 var bsMessageModal = new bootstrap.Modal(
-  document.getElementById("message-modal"),
+  document.getElementById(ID.MESSAGE_MODAL),
   {
     keyboard: true,
   }
@@ -171,7 +174,7 @@ function dropHandler(ev, id) {
         Object.keys(cbor1).every((key) => Object.keys(cbor2).includes(key)) &&
         Object.keys(cbor2).every((key) => Object.keys(cbor1).includes(key))
       ) {
-        document.getElementById("result").innerHTML = resultCard(
+        document.getElementById(ID.RESULT).innerHTML = resultCard(
           bsAlertElement(
             successMessage.CLASS,
             "All keys of the two CBOR files are identical."
@@ -181,7 +184,7 @@ function dropHandler(ev, id) {
         // Right side CBOR more complete
         Object.keys(cbor1).every((key) => Object.keys(cbor2).includes(key))
       ) {
-        document.getElementById("result").innerHTML = resultCard(
+        document.getElementById(ID.RESULT).innerHTML = resultCard(
           bsAlertElement(
             errorMessage.CLASS,
             `Right side CBOR file contained extra key(s): ${Object.keys(
@@ -193,7 +196,7 @@ function dropHandler(ev, id) {
         // left side CBOR more complete
         Object.keys(cbor2).every((key) => Object.keys(cbor1).includes(key))
       ) {
-        document.getElementById("result").innerHTML = resultCard(
+        document.getElementById(ID.RESULT).innerHTML = resultCard(
           bsAlertElement(
             errorMessage.CLASS,
             `Left side CBOR file contained extra key(s): ${Object.keys(
@@ -205,7 +208,7 @@ function dropHandler(ev, id) {
         Object.keys(cbor2).some((key) => Object.keys(cbor1).includes(key))
       ) {
         // Common keys in both CBOR
-        document.getElementById("result").innerHTML = resultCard(
+        document.getElementById(ID.RESULT).innerHTML = resultCard(
           bsAlertElement(
             errorMessage.CLASS,
             `Common keys of both CBOR files.<br>Left side CBOR file contained extra key(s): ${Object.keys(
@@ -219,24 +222,24 @@ function dropHandler(ev, id) {
         );
       } else {
         // No key in common
-        document.getElementById("result").innerHTML = resultCard(
+        document.getElementById(ID.RESULT).innerHTML = resultCard(
           bsAlertElement(
             errorMessage.CLASS,
             "None of the keys of both CBOR files are identical."
           )
         );
       }
-      /**
+      /*************************************************************************
        * Create the event to save PDF witht the result of the comparaison.
        * A button to save page as PDF file.
        */
       document
-        .getElementById(PDF_BUTTON_ID)
+        .getElementById(ID.PDF_BUTTON)
         .addEventListener("click", (event) => {
           // Copy the document to remove the save button.
           let HTMLToSave = document.cloneNode(true);
           // Remove element that should no be in the pdf.
-          [EXTERNAL_LINKS, PDF_BUTTON_ID].forEach((id) => {
+          ["external-links", ID.PDF_BUTTON].forEach((id) => {
             let elementToRemove = HTMLToSave.getElementById(id);
             elementToRemove.remove();
           });
