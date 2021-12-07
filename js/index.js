@@ -8,7 +8,7 @@ class ID {
 /**
  * Return an HTML formated string corresponding to Bootsrap card.
  * @param {String} cardHeader - Header content of the card.
- * @param {String} cardBody - Body content of the card.
+ * @param {String} cardBody   - Body content of the card.
  */
 const genericCard = (cardHeader, cardBody) =>
   `<div class="card"><div class="card-header">${cardHeader}</div><div class="card-body">${cardBody}</div></div>`;
@@ -68,7 +68,7 @@ var bsMessageModal = new bootstrap.Modal(
 /**
  * Return an HTML formated string corresponding to Bootstrap alert div.
  * @param {String} tagClass - Complete the alert class of the alert div.
- * @param {String} message - Message to alert the div.
+ * @param {String} message  - Message to alert the div.
  */
 const bsAlertElement = (tagClass, message) =>
   `<div class="alert ${tagClass}" role="alert">${message}</div>`;
@@ -76,8 +76,8 @@ const bsAlertElement = (tagClass, message) =>
  * Configure the modal with a Bootstrap card contained an alert div in the body.
  * Calling this function show the modal.
  * @param {String} tagClass - Complete the alert class of the alert div.
- * @param {String} title - Message to alert the div.
- * @param {String} message - Message to alert the div.
+ * @param {String} title    - Message to alert the div.
+ * @param {String} message  - Message to alert the div.
  */
 const showMessageModalParameter = (tagClass, title, message) => {
   messageModal.querySelector(".modal-title").innerHTML = title;
@@ -106,7 +106,7 @@ var cbor2 = null; // CBOR decoded object of the file on the right
 var fileReader = new FileReader(); // Unique read of all files
 /**
  * Function called when the file is dropped.
- * @param {Event} ev - Dropping event.
+ * @param {Event} ev  - Dropping event.
  * @param {String} id - id of the where the file was dropped.
  */
 function dropHandler(ev, id) {
